@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+{% block title %}
+    Sentiment Analysis
+{% endblock %}
+{% block content %}
+
+<br>
+
+<div class="container">
+	<section class="jumbotron text-center">
+        <div class="row">
+            <div class="col-sm-6">
+                <h1 class="jumbotron-heading">Sentiment Analysis</h1>
+                <p class="lead text-black">
+                <h3><b>by Dicky Alamsyah</b></h3>
+                <br>
+                <p>Classified by machine learning and data analysis from <br>Airbnb Newyork Review.</p>
+                </p>
+                <p>
+                <a href="https://github.com/dickyalsyah" target="_blank" class="btn btn-primary my-2">Follow me on GitHub</a>
+                <a href="https://www.linkedin.com/in/dicky-alamsyah-4b638491/" target="_blank" class="btn btn-secondary my-2">Linkedin</a>
+                </p>
+            </div>
+            
+
+            <div class="col-sm-6">
+                <div class="container">
+                    <form method="POST" action= {{ url_for('sentiment') }} id="myForm">
+                    <textarea name="message" class="form-control" cols="8" rows="8">{{ content }}</textarea>
+                    <div class="row justify-content-end">
+                    <div class="col-4"><p style="font-size: x-small; color: rgb(78, 77, 77);">minimum character 2 length</p></div>
+                    </div>
+                    <button class="btn btn-info" type="submit">Analysis</button>
+                    <a href="{{ url_for('index')}}" type="button" class="btn btn-danger" >Reset</a>
+                    </form>
+                <br>
+                </div>
+                <div class="container">
+                    {{ check }}
+                    {% if prediction == 2 %}
+                        <div class="container">
+                            <p class="alert alert-success"><b>Positive Sentiment</b></p>
+                        </div>
+                        <div class="container">
+                            <p>Sentiment text with probability {{ proba }} %</p>
+                        </div>
+                    {% elif prediction == 1 %}
+                        <div class="container">
+                            <p class="alert alert-secondary"><b>Neutral Sentiment</b></p>
+                        </div>
+                        <div class="container">
+                            <p>Sentiment text with probability {{ proba }} %</p>
+                        </div>
+                    {% elif prediction == 0 %}
+                        <div class="container">
+                            <p class="alert alert-danger"><b>Negative Sentiment</b></p>
+                        </div>
+                        <div class="container">
+                            <p>Sentiment text with probability {{ proba }} %</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+        </div>
+    </section>
+</div>	
+	<!-- form area -->
+
+<script>
+    function myFunction() {
+        document.getElementById("myForm").reset();
+    }
+
+</script>     
+{% endblock %}
