@@ -1,6 +1,6 @@
 WTForms==2.3.1
 dash_html_components==1.0.3
-Werkzeug==1.0.1
+Werkzeug==2.2.3
 dash_bootstrap_components==0.10.3
 nltk==3.5
 dash_core_components==1.10.1
