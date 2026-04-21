@@ -5,7 +5,7 @@ dash_bootstrap_components==0.10.3
 nltk==3.5
 dash_core_components==1.10.1
 plotly==4.6.0
-Flask==1.1.2
+Flask==2.3.2
 pandas==1.0.3
 numpy==1.18.2
 scikit_learn==0.22.1
